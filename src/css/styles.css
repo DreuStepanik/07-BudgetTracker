@@ -1,0 +1,19 @@
+#leftContainer {
+	margin: 0 auto;
+}
+
+#rightContainer {
+	margin: 0 auto;
+}
+
+#summaryContainer {
+	margin: 0 auto;
+	text-align: center;
+	display: inline-block;
+	
+}
+
+.jumbotron {
+	background-color: #478f8f;
+	color: #fff;
+}

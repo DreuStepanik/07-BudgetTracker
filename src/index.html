@@ -1,0 +1,143 @@
+<!DOCTYPE html> 
+<html lang="en" ng-app="budgetApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Budget Tracker</title>
+<!-- bower:css -->
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+<!-- endbower -->
+
+<!-- inject:css -->
+<link rel="stylesheet" href="css/styles.css">
+<!-- endinject -->
+</head>
+</head>
+<div class="jumbotron">
+    <header>
+        <h1 class="text-center">Budget Tracker</h1>
+        <h2 class="text-center">Project No. 7</h2>
+    </header>
+</div>
+
+<body ng-controller="budgetCtrl">
+<!-- Generate a Left-Container to store information -->
+<div id="leftContainer" class="col-sm-6 row row-centered container">
+	<div class="panel panel-success">
+<!-- Create a container for the Income Entries by User -->
+		<div class="panel-heading lead" name="incomeEntries">Income Entries:</div>
+			<form class="form">
+				<div class="form-group">
+					<div class="description text-center">
+					<label name="description">Description:</label>
+					<input id="personDescription" type="text" class="form-control" placeholder="Enter Description" ng-model="newIncome.text"> 
+					</div>
+				</div>	
+				<div class="form-group">
+					<div class="amount text-center">
+					<label name="amount">Amount:</label>
+					<input id="personAmount" type="text" class="form-control" placeholder="Enter Amount" ng-model="newIncome.amount">
+					</div>
+				</div>
+				<div class="button">
+					<button ng-click="addIncome()" type="submit" class="btn btn-success form-control">+ Add Income</button>
+				</div>
+				<hr>
+					<table class="table table-responsive">
+						<thead>
+							<th width="80%">Description:</th>
+							<th width="20%">Amount:</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="income in incomes">
+								<td>{{income.description}}</td>
+								<td class="text-right">{{income.amount | currency}}</td>
+							</tr>
+						</tbody>
+					</table>
+			</form>
+		</div>			
+	</div>		
+</div>
+<!-- Generate a Right-Container to store information -->
+<div id="rightContainer" class="col-sm-6 row row-centered container">
+	<div class="panel panel-danger">
+<!-- Create a container for the Expense Entries by User -->
+		<div class="panel-heading lead" name="expenseEntries">Expense Entries:</div>
+			<form class="form">
+				<div class="form-group">
+					<div class="description text-center">
+					<label name="description">Description:</label>
+					<input id="personDescription2" type="text" class="form-control" placeholder="Enter Description" ng-model="newExpense.text"> 
+					</div>
+				</div>	
+				<div class="form-group">
+					<div class="amount text-center">
+					<label name="amount">Amount:</label>
+					<input id="personAmount2" type="text" class="form-control" placeholder="Enter Amount" ng-model="newExpense.amount">
+					</div>
+				</div>
+				<div class="button">
+					<button ng-click="addExpense()" type="submit" class="btn btn-danger form-control">+ Add Expense</button>
+				</div>
+				<hr>
+					<table class="table table-responsive">
+						<thead>
+							<th width="80%">Description:</th>
+							<th width="20%">Amount:</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="expense in expenses">
+								<td>{{expense.description}}</td>
+								<td class="text-right">{{expense.amount | currency}}</td>
+							</tr>
+						</tbody>
+					</table>
+			</form>
+		</div>			
+	</div>		
+</div>
+<div></div>
+<!-- Generate a Summary for the expenses -->
+
+<div class="row">
+	<div name="spacer1" class="col-sm-3"></div>
+		<div id="summaryContainer" class="col-sm-6">
+			<div>
+				<div class="panel panel-info">
+					<div class="panel-heading lead" name="expenseSummary">Summary:</div>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Total Income:</th>
+									<th class="tbl text-center">Left-over amount after spending:</th>
+									<th class="tbl text-right">Total Expenses:</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>{{totalIncome | currency}}</td>
+									<td class="text-center">{{totalLeft | currency}}</td>
+									<td class="text-right">{{totalExpenses | currency}}</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>	
+			</div>
+		</div>
+	<div name="spacer2" class="col-sm-3"></div>
+</div>
+
+
+
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<!-- endbower -->
+<!-- inject:js -->
+<script src="js/app.js"></script>
+<script src="js/budget.controller.js"></script>
+<script src="js/budget.factory.js"></script>
+<!-- endinject -->
+</body>
+</html>
